@@ -1,0 +1,50 @@
+version: '2'
+services:
+  demo-app:
+    image: demo
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      - SPRING_CLOUD_CONSUL_HOST=consul
+      - SPRING_CLOUD_CONSUL_PORT=8500
+      - SPRING_DATA_MONGODB_URI=mongodb://demo-mongodb:27017
+      - SPRING_DATA_MONGODB_DATABASE=demo
+      - JHIPSTER_CACHE_REDIS_SERVER=redis://demo-redis:6379
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - KAFKA_CONSUMER_KEY_DESERIALIZER=org.apache.kafka.common.serialization.StringDeserializer
+      - KAFKA_CONSUMER_VALUE_DESERIALIZER=org.apache.kafka.common.serialization.StringDeserializer
+      - KAFKA_CONSUMER_BOOTSTRAP_SERVERS=kafka:9092
+      - KAFKA_CONSUMER_GROUP_ID=demo
+      - KAFKA_CONSUMER_AUTO_OFFSET_RESET=earliest
+      - KAFKA_PRODUCER_BOOTSTRAP_SERVERS=kafka:9092
+      - KAFKA_PRODUCER_KEY_DESERIALIZER=org.apache.kafka.common.serialization.StringDeserializer
+      - KAFKA_PRODUCER_VALUE_DESERIALIZER=org.apache.kafka.common.serialization.StringDeserializer
+  demo-mongodb:
+    extends:
+      file: mongodb.yml
+      service: demo-mongodb
+  demo-redis:
+    extends:
+      file: redis.yml
+      service: demo-redis
+  kafka:
+    extends:
+      file: kafka.yml
+      service: kafka
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+  zookeeper:
+    extends:
+      file: kafka.yml
+      service: zookeeper
+  consul:
+    extends:
+      file: consul.yml
+      service: consul
+
+  consul-config-loader:
+    extends:
+      file: consul.yml
+      service: consul-config-loader

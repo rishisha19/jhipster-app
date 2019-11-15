@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.learning.jhipster",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.5.0",
+    "applicationType": "microservice",
+    "baseName": "demo",
+    "packageName": "com.learning.jhipster",
+    "packageFolder": "com/learning/jhipster",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "redis",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": "kafka",
+    "serviceDiscoveryType": "consul",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MTBjOTAyNGZjYjJhZmY4YjI3NTgzNTkzZDM5ZGEzZDFlM2ZkNzQyZTE1MzFkZTE5ZjU5ZGJjNWUwZTM3ZGE3ZjZlNWJlMWMyNGNiY2Q2YzBmZjgzNGM0NjA5M2Q0ZmFmMGVhY2E2NzQ0NDUxM2IxZmI2ZjEyYzgxZDVhMjE5NjE=",
+    "embeddableLaunchScript": false,
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "de"
+    ],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
